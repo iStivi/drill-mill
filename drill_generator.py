@@ -20,7 +20,7 @@ for line in drill_in:
 
    if tool_set == 0:
        drill_out.write("G0 Z20" + "\n")
-       drill_out.write("M6" + "  (" + line[:-2] + ")" + "\n")
+       drill_out.write("M6" + "  (" + line[:-1] + ")" + "\n")
    elif x_start > -1:
       x_pos = line[x_start+1:y_start]
       y_pos = line[y_start+1:]
