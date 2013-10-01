@@ -1,17 +1,29 @@
-input_file = "tube-tester"
+input_file = "180V_power"
 
 drill_in = open(input_file + ".drd",'r')
 code_out = input_file + "-drill.tap"
 drill_out = open(code_out,'w')
 feed_rate = "500"
+drill_list = {}
 
 drill_out.write("G71 G90" + "\n") #metric, absolute coord
 drill_out.write("F" + feed_rate + "\n")
 drill_out.write("G0 Z5" + "\n")
 
-drill_in.readline()
 
-
+line = drill_in.readline()
+line = drill_in.readline()
+while line != "%\n":
+   m_find = line.find('M')
+   tool_find = line.find('T')
+   print(line)
+   if m_find >= 0:
+      print("command")
+   if tool_find >= 0:
+      tool_name = line[:3]
+      tool_size = line[-7:-1]
+      drill_list[tool_name] = tool_size
+   line = drill_in.readline()
 
 for line in drill_in:
    x_start = line.find('X')
@@ -20,7 +32,7 @@ for line in drill_in:
 
    if tool_set == 0:
        drill_out.write("G0 Z20" + "\n")
-       drill_out.write("M6" + "  (" + line[:-1] + ")" + "\n")
+       drill_out.write("M6" + "  (" + line[:-1] + " " + drill_list[line[:-1]] + ")" + "\n")
    elif x_start > -1:
       x_pos = line[x_start+1:y_start]
       y_pos = line[y_start+1:]
