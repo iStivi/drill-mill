@@ -63,13 +63,20 @@ for line in mill_in:
       elif move_type == "D01":
          x_cut_end = x_pos[:-3] + "." + x_pos[-3:]
          y_cut_end = y_pos[:-3] + "." + y_pos[-3:]
-         tap_out.write("G1 Z-0.5 X" + x_cut_end + " Y" + y_cut_end + "\n")
+         tap_out.write("G1 Z-0.5\n")
+         tap_out.write("G1 X" + x_cut_end + " Y" + y_cut_end + "\n")
+         tap_out.write("G1 Z1\n")
+         tap_out.write("G0 X" + x_cut_start + " Y" + y_cut_start + "\n")
+         tap_out.write("G1 Z-1\n")
+         tap_out.write("G1 X" + x_cut_end + " Y" + y_cut_end + "\n")
+         tap_out.write("G1 Z1\n")
+         tap_out.write("G0 X" + x_cut_start + " Y" + y_cut_start + "\n")
+         tap_out.write("G1 Z-1.5\n")
+         tap_out.write("G1 X" + x_cut_end + " Y" + y_cut_end + "\n")
+         tap_out.write("G1 Z1\n")
          tap_out.write("G0 Z1 X" + x_cut_start + " Y" + y_cut_start + "\n")
-         tap_out.write("G1 Z-1 X" + x_cut_end + " Y" + y_cut_end + "\n")
-         tap_out.write("G0 Z1 X" + x_cut_start + " Y" + y_cut_start + "\n")
-         tap_out.write("G1 Z-1.5 X" + x_cut_end + " Y" + y_cut_end + "\n")
-         tap_out.write("G0 Z1 X" + x_cut_start + " Y" + y_cut_start + "\n")
-         tap_out.write("G1 Z-2 X" + x_cut_end + " Y" + y_cut_end + "\n")
+         tap_out.write("G1 Z-2\n")
+         tap_out.write("G1 X" + x_cut_end + " Y" + y_cut_end + "\n")
          tap_out.write("G0 Z5\n")
          
 tap_out.write("M30" + "\n")      
