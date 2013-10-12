@@ -1,8 +1,8 @@
-input_file = "180V_power"
+input_file = "tube-tester"
 
 drill_in = open(input_file + ".drd",'r')
 mill_in = open(input_file + ".mil",'r')
-code_out = input_file + "-drill-mill.tap"
+code_out = "./tap/" + input_file + "-drill-mill.tap"
 tap_out = open(code_out,'w')
 feed_rate = "500"
 drill_list = {}

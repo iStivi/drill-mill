@@ -1,7 +1,7 @@
 input_file = "4_digit_display"
 
 drill_in = open(input_file + ".drd",'r')
-code_out = input_file + "-drill.tap"
+code_out = "./tap/" + input_file + "-drill.tap"
 drill_out = open(code_out,'w')
 feed_rate = "500"
 drill_list = {}
