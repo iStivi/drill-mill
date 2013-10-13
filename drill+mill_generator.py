@@ -5,6 +5,7 @@ mill_in = open(input_file + ".mil",'r')
 code_out = "./tap/" + input_file + "-drill-mill.tap"
 tap_out = open(code_out,'w')
 feed_rate = "500"
+mill_feed = "100"
 drill_list = {}
 
 tap_out.write("(Project " + input_file + " )\n")
@@ -49,7 +50,7 @@ for line in drill_in:
 drill_in.close()
 
 tap_out.write("(start milling routine)\n")
-tap_out.write("F" + feed_rate + "\n")
+tap_out.write("F" + mill_feed + "\n")
 tap_out.write("T201 M6 (1mm mill)\n")
 
 for line in mill_in:
