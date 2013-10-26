@@ -1,4 +1,4 @@
-input_file = "tube-tester"
+input_file = "180V_power"
 
 drill_in = open(input_file + ".drd",'r')
 mill_in = open(input_file + ".mil",'r')
