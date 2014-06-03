@@ -1,6 +1,6 @@
-input_file = "IV-18_test"
+input_file = "counter_test"
 
-drill_in = open(input_file + ".drd",'r')
+drill_in = open("./drd/" + input_file + ".drd",'r')
 code_out = "./tap/" + input_file + "-drill.tap"
 drill_out = open(code_out,'w')
 feed_rate = "500"
