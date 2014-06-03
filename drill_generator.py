@@ -1,4 +1,4 @@
-input_file = "counter_test"
+input_file = "IV-18_test"
 
 drill_in = open(input_file + ".drd",'r')
 code_out = "./tap/" + input_file + "-drill.tap"
