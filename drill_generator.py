@@ -1,4 +1,4 @@
-input_file = "counter_test"
+input_file = "tube_power"
 
 drill_in = open("./drd/" + input_file + ".drd",'r')
 code_out = "./tap/" + input_file + "-drill.tap"
@@ -34,15 +34,14 @@ for line in drill_in:
    tool_set = line.find('T') 
 
    if tool_set == 0:
-       drill_out.write("G0 Z20" + "\n")
+       drill_out.write("G0 Z25" + "\n")
        drill_out.write(line[:-1] + " M6 (" + line[:-1] + " " + drill_list[line[:-1]] + ")" + "\n")
+       drill_out.write("M3\n")
    elif x_start > -1:
       x_pos = line[x_start+1:y_start]
       y_pos = line[y_start+1:]
-      drill_out.write("G0 X" + x_pos[:-3] + "." + x_pos[-3:] + " Y" + y_pos[:-4] + "." + y_pos[-4:-1] + "\n")
-      drill_out.write("G1 Z-2" + "\n")
-   drill_out.write("G4 P0.1" + "\n")
-   drill_out.write("G0 Z2" + "\n")
+      drill_out.write("G90 G81 G99 X" + x_pos[:-3] + "." + x_pos[-3:] + " Y" + y_pos[:-4] + "." + y_pos[-4:-1] + " Z-3 R3\n")
+      
 
 drill_out.write("M30" + "\n")
 
