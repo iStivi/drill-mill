@@ -4,8 +4,8 @@
 
 *.drd
 *.tap
-tap/
-drd/
+/tap
+/drd
 
 #################
 ## Eclipse
